@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+// const cors = require('cors');
 const path = require('path');
 
 const app = express();
@@ -21,6 +22,11 @@ mongoose.connection.on('connected', () => {
     console.log('Mongoose is connected!!!');
 });
 
+// Data parsing
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// app.use(cors());
 
 // HTTP request logger
 app.use(morgan('tiny'));
